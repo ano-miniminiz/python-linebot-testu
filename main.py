@@ -9,7 +9,7 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
-    QuickReplyButton, MessageAction, QuickReply
+    QuickReplyButton, MessageAction, QuickReply, StickerSendMessage
 )
 
 app = Flask(__name__)
@@ -51,8 +51,7 @@ def handle_message(event):
 
     if event.message.text in language_list:
         # スタンプを返す
-        messages = TextSendMessage(text="ぜんざい", quick_reply=QuickReply(items=items))
-        line_bot_api.reply_message(event.reply_token, messages=messages)
+        line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=11537,sticker_id=52002750))
 
     elif event.message.text == "まんざい":
         # 本来はここで韻を踏んだものを受け取って送る
