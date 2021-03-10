@@ -45,11 +45,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     language_list = ["やかましいわ！", "知らんがな", "欧米かっ！", "ちょっと何言ってるかわからない",
-                     "太るって", "病院行きな", "食べすぎだよ", "アリエッティ"]
+                     "太るって", "病院行きな", "食べすぎだよ", "まんざい"]
 
     if event.message.text in language_list:
         items = [QuickReplyButton(action=MessageAction(label=f"{language}", text=f"{language}")) for language in language_list]
-        messages = TextSendMessage(text="スパゲッティ", quick_reply=QuickReply(items=items))
+        messages = TextSendMessage(text="ぜんざい", quick_reply=QuickReply(items=items))
         line_bot_api.reply_message(event.reply_token, messages=messages)
     else:
         line_bot_api.reply_message(
