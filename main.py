@@ -54,6 +54,13 @@ def handle_follow(event):
                              'https://note.com/roast_official/n/ndc7d00f38d44\n「まんざい」と入力してみてね！')
     )
 
+@handler.add(FollowEvent)
+def handle_follow(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text='「まんざい」と入力してみてね！')
+    )
+
 
 # elifの部分は別クラスにするのもアリ
 @handler.add(MessageEvent, message=TextMessage)
