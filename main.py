@@ -1,7 +1,6 @@
 from flask import Flask, request, abort
 import os
 import random
-# from fat import main
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -92,8 +91,6 @@ def handle_message(event):
         reply_text = "ちょっと何言ってるか分からない" + "\uDBC0\uDC86"
         messages = TextSendMessage(reply_text, quick_reply=QuickReply(items=items))
         line_bot_api.reply_message(event.reply_token, messages=messages)
-
-# 普通に返す
 
 
 # スタンプメッセージを受け取ったとき

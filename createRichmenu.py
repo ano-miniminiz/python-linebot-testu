@@ -1,18 +1,22 @@
-from flask import Flask, request, abort
 import os
-import random
-
+from linebot import (
+    LineBotApi, WebhookHandler
+)
 from main import line_bot_api
 
 from linebot.models import (
     RichMenu, RichMenuSize, RichMenuArea, RichMenuBounds, MessageAction
 )
 
+YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
+YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
+
+line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 def createRichmenu():
     result = False
     try:
-        # define a new richmenu
         rich_menu_to_create = RichMenu(
             size = RichMenuSize(width=1200, height=405),
             selected = True,
@@ -35,7 +39,7 @@ def createRichmenu():
         path = 'C:\\Users\\anomi_o48i67p\\python-linebot-test2'
 
         with open(path, 'rb') as f:
-            line_bot_api.set_rich_menu_image(richMenuId, "", f)
+            line_bot_api.set_rich_menu_image(richMenuId, "image/jpeg", f)
 
         # set the default rich menu
         line_bot_api.set_default_rich_menu(richMenuId)
@@ -45,5 +49,7 @@ def createRichmenu():
     except Exception:
         result = False
 
-
     return result
+
+if __name__ == "__main__":
+    createRichmenu()
