@@ -71,13 +71,13 @@ def main(query):
     ranking = get_idx_score(data_list_vo, target_word_vo)
     # print(data_list_vo)
     # print(target_word_vo)
-    # for i in range(len(ranking)):
-    #     idx = ranking[i][0]
-    #     score = ranking[i][1]
+    for i in range(len(ranking)):
+        idx = ranking[i][0]
+        score = ranking[i][1]
         # print("スコア:" + str(score))
         # print("言葉:" + dic[idx])
-    idx = ranking[0][0]
-    return dic[idx]
+        index = ranking[0][0]
+    return dic[index]
 
 
 # 短い方のwordをスライスし、他方にそれが含まれていた場合「韻」と見なし、その長さをスコアとして加算する
