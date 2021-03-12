@@ -91,14 +91,8 @@ def handle_message(event):
     elif len(event.message.text) > 10:
         line_bot_api.reply_message(event.reply_token, TextSendMessage("単語が長いよ！" + "\uDBC0\uDC8F"))
 
-    # elif str.isalnum(event.message.text):
-    #     line_bot_api.reply_message(event.reply_token, TextSendMessage("Pardon?" + "\uDBC0\uDC9F"))
-    #
-    # elif not str.isalpha(event.message.text):
-    #     line_bot_api.reply_message(event.reply_token, TextSendMessage("なんて？" + "\uDBC0\uDC9C"))
-
     elif re.compile(r'^[a-zA-Z0-9_!"#$%&-+:/\\ \']+$').match(event.message.text) is not None:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage("なんて？" + "\uDBC0\uDC9C"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("Pardon?" + "\uDBC0\uDC9F"))
 
     else:
         # 韻を踏んだもの(reply_text)を受け取って送る
