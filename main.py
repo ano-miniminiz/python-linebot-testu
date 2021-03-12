@@ -54,7 +54,6 @@ def callback():
 
 @handler.add(FollowEvent)
 def handle_follow(event):
-
     line_bot_api.reply_message(
         event.reply_token,
         [TextSendMessage(text='友達追加ありがとう！\n遊び方ガイドはこちら↓\n '
