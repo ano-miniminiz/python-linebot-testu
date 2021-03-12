@@ -85,6 +85,11 @@ def handle_message(event):
         messages = TextSendMessage("ぜんざい", quick_reply=QuickReply(items=items))
         line_bot_api.reply_message(event.reply_token, messages=messages)
 
+    # 「コマンド」を受け取ったとき
+    elif event.message.text == "コマンド":
+        messages = TextSendMessage("", quick_reply=QuickReply(items=items))
+        line_bot_api.reply_message(event.reply_token, messages=messages)
+
     # 受け取ったメッセージが10字より大きいとき
     elif len(event.message.text) > 10:
         line_bot_api.reply_message(event.reply_token, TextSendMessage("単語が長いよ！" + "\uDBC0\uDC9F"))
