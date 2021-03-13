@@ -20,7 +20,7 @@ def message_generate(query):
     target_word_vo = re.sub(r"[^aeiou]+", "", target_word)
 
     # このdfの右辺に挿入するものを入れていく感じ
-    df = pd.read_csv('/home/denham/OpenHackU_vol_4_ID3/fatlist.csv')
+    df = pd.read_csv('ver3.csv')
 
     df['ローマ字'] = df['原文'].apply(convert_to_romaji)
     df['抽出'] = df['ローマ字'].apply(get_vowel)
